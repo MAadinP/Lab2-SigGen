@@ -2,12 +2,12 @@
 
 # Cleanup
 rm -rf obj_dir/
-rm -f sinegen.vcd
+rm -f sigdelay.vcd
 
 ~/Documents/iac/lab0-devtools/tools/attach_usb.sh
 
-verilator -Wall --cc --trace sinegen.sv --exe sinegen_tb.cpp
+verilator -Wall --cc --trace sigdelay.sv --exe sigdelay_tb.cpp
 
-make -j -C obj_dir/ -f Vsinegen.mk Vsinegen
+make -j -C obj_dir/ -f Vsigdelay.mk Vsigdelay
 
-obj_dir/Vsinegen
+obj_dir/Vsigdelay

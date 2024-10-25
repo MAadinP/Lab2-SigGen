@@ -1,7 +1,6 @@
 module counter #(
-    parameter BIT_WIDTH = 8
+    parameter BIT_WIDTH = 9
 )( 
-    input logic [BIT_WIDTH-1:0]     incr,
     input logic                     clk,
     input logic                     rst,
     input logic                     en,
@@ -10,6 +9,5 @@ module counter #(
 
 always_ff @(posedge clk) 
     if(rst) count <= {BIT_WIDTH{1'b0}};
-    else if (en) count <= count + incr;
-    else count <=  count;
+    else count <= count + {{BIT_WIDTH-1{1'b0}}, 1};
 endmodule

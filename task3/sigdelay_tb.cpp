@@ -27,9 +27,10 @@ int main(int argc, char **argv, char **env) {
 
   // initialize simulation input 
   top->clk = 1;
+  top->en = 1;
   top->rst = 0;
-  top->wr = 1;
-  top->rd = 1;
+  top->wen = 1;
+  top->ren = 1;
   top->offset = 64;
   
   // intialize variables for analogue output
@@ -41,14 +42,15 @@ int main(int argc, char **argv, char **env) {
     for (tick=0; tick<2; tick++) {
       tfp->dump (2*simcyc+tick);
       top->clk = !top->clk;
-      top->eval ();
+      top->eval();
     }
     top->mic_signal = vbdMicValue();
-    top->offset = abs(vbdValue());     // adjust delay by changing incr
+    top->offset = abs(vbdValue());     // adjust delay by changing offset
 
     // plot RAM input/output, send sample to DAC buffer, and print cycle count
     vbdPlot(int (top->mic_signal), 0, 255);
     vbdPlot(int (top->delayed_signal), 0, 255);
+    std::cout << int(top->addr) << std::endl;
     vbdCycle(simcyc);
 
     // either simulation finished, or 'q' is pressed
