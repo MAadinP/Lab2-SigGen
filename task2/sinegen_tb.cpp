@@ -17,14 +17,14 @@ int main(int argc, char **argv, char **env) {
     tfp->open("sinegen.vcd");
 
     if (vbdOpen() !=1) return(-1);
-    vbdHeader("Lab2 - T1");
+    vbdHeader("Lab2 - Task 2");
 
     top->clk = 1;
     top->en = 1;
     top->rst = 0;
     top->incr = 1;
 
-    for(i=0; i<10000; i++) {
+    for(i=0; i<240; i++) {
         
         for(j=0; j<2; j++) {
             tfp->dump(2*i+j);

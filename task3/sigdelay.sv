@@ -10,11 +10,9 @@ module sigdelay #(
     input logic [D_WIDTH-1:0]   mic_signal,
     input logic [A_WIDTH-1:0]   offset,
     output logic [D_WIDTH-1:0]  delayed_signal,
-    output logic [A_WIDTH-1:0]  addr
 );
 
 logic [A_WIDTH-1:0] address;
-assign addr = address;
 
 counter addrCounter (
     .clk (clk),

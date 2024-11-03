@@ -44,6 +44,7 @@ int main(int argc, char **argv, char **env) {
       top->clk = !top->clk;
       top->eval();
     }
+    
     top->mic_signal = vbdMicValue();
     top->offset = abs(vbdValue());     // adjust delay by changing offset
 

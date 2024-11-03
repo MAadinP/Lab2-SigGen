@@ -24,7 +24,7 @@ int main(int argc, char **argv, char **env) {
     top->rst = 0;
     top->incr = 1;
 
-    for(i=0; i<600; i++) {
+    for(i=0; i<240; i++) {
         
         for(j=0; j<2; j++) {
             tfp->dump(2*i+j);
@@ -33,10 +33,8 @@ int main(int argc, char **argv, char **env) {
         }
 
         top->incr = 1;
-        top->offset = vbdValue();
 
-        vbdPlot(int(top->dout1), 0, 255);
-        vbdPlot(int(top->dout2), 0, 255);
+        vbdPlot(int(top->dout), 0, 255);
         vbdCycle(i);
 
         if ((Verilated::gotFinish()) || (vbdGetkey()=='q')) 
